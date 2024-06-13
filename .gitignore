@@ -23,7 +23,10 @@ ext/missing
 ext/mkinstalldirs
 ext/run-tests.php
 ext/.deps
-ext/libtool
+ext/libto
 
 .idea/
 .venv/
+
+data/GR3subtrees
+pretrained/
