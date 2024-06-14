@@ -163,7 +163,7 @@ class Transformer(nn.Module):
 
 
 if __name__ == "__main__":
-    seq = torch.randint(0, 5005, (8, 256))
+    seq = torch.randint(0, 5006, (8, 256))
     model = Transformer(256, 5006, 768, 2, 4, 8)
     out = model(seq)
 

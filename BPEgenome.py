@@ -176,3 +176,16 @@ if __name__ == '__main__':
         seq_len_list.append(len(seq_tokens_id))
 
     print('Max seq length of GR3_ribosomal_maxg_expanded.tsv: {}'.format(max(seq_len_list)))
+
+    # parallelize tokenization
+    from joblib import Parallel, delayed
+    import multiprocessing
+
+    num_cores = multiprocessing.cpu_count() - 1
+    print('Number of cores: {}'.format(num_cores))
+
+    seq_tokens_id_list = Parallel(n_jobs=num_cores)(delayed(genome_bpe.token2id)(genome_bpe.tokenize_word(seq)) for seq in data)
+
+    print('Tokenization completed.')
+    print('Number of max sequences: {}'.format(max(seq_tokens_id_list)))
+
